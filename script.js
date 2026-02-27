@@ -1,5 +1,19 @@
 let stage = 1;
 
+// Random floating animation speed
+let floats = document.querySelectorAll(".float");
+
+floats.forEach(function(el){
+
+let duration = 5 + Math.random() * 10;
+let delay = Math.random() * 5;
+
+el.style.animationDuration = duration + "s";
+el.style.animationDelay = delay + "s";
+
+});
+
+// Puzzle logic
 function checkAnswer(){
 
 let input = document.getElementById("answer").value.toUpperCase();
@@ -7,17 +21,23 @@ let input = document.getElementById("answer").value.toUpperCase();
 if(stage === 1){
 
 if(input === "DESIRE"){
+
 document.getElementById("story").innerHTML =
-"Correct. A spell appears in the air...";
+"✨ The mirror fades... A glowing spell appears.";
+
 document.getElementById("clue").innerHTML =
-"Spell word: MAGIC (shift each letter +1)";
+"Clue: MAGIC (Shift each letter forward by 1)";
+
 document.getElementById("message").innerHTML =
-"Hint: Caesar Cipher";
+"Hint: Spell Cipher";
+
 stage = 2;
-}
-else{
+
+}else{
+
 document.getElementById("message").innerHTML =
-"Wrong. Gaze deeper into the mirror.";
+"❌ Wrong. Gaze deeper into the mirror.";
+
 }
 
 }
@@ -25,15 +45,23 @@ document.getElementById("message").innerHTML =
 else if(stage === 2){
 
 if(input === "NBHJD"){
+
 document.getElementById("story").innerHTML =
-"You are close. The Horcrux reveals itself...";
+"💀 You sense the Final Horcrux nearby...";
+
 document.getElementById("clue").innerHTML =
-"Final password: Reverse last 3 letters of NBHJD";
-stage = 3;
-}
-else{
+"Final Clue: Reverse the last 3 letters of NBHJD";
+
 document.getElementById("message").innerHTML =
-"The spell failed.";
+"The Horcrux is revealing itself...";
+
+stage = 3;
+
+}else{
+
+document.getElementById("message").innerHTML =
+"❌ Spell failed.";
+
 }
 
 }
@@ -41,16 +69,21 @@ document.getElementById("message").innerHTML =
 else if(stage === 3){
 
 if(input === "DJH"){
+
 document.getElementById("story").innerHTML =
-"⚡ YOU FOUND THE FINAL HORCRUX ⚡";
+"⚡ YOU DESTROYED THE FINAL HORCRUX ⚡";
+
 document.getElementById("clue").innerHTML =
-"Victory belongs to you, wizard.";
+"🏆 Hogwarts is safe because of you!";
+
 document.getElementById("message").innerHTML =
-"🏆 Congratulations!";
-}
-else{
+"🎉 Congratulations, Wizard!";
+
+}else{
+
 document.getElementById("message").innerHTML =
-"The Horcrux remains hidden.";
+"❌ The Horcrux still exists.";
+
 }
 
 }
